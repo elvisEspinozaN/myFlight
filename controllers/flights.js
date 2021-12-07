@@ -20,7 +20,11 @@ flightRouter.get('/', (req, res) => {
 });
 
 // index
-
+flightRouter.get('/flights', (req, res) => {
+    res.render('index.ejs', {
+        tabTitle: 'Flights',
+    });
+});
 
 // new
 
