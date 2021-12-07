@@ -18,6 +18,11 @@ flightRouter.get('/seed', (req, res) => {
     });
 });
 
+// home page
+flightRouter.get('/', (req, res) => {
+    res.render('home.ejs')
+});
+
 // index
 
 
