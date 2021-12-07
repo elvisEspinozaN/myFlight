@@ -1,5 +1,6 @@
 // dependencies
 const express = require('express');
+const { findById } = require('../models/flights');
 const flightRouter = express.Router();
 const Flight = require('../models/flights');
 const flightSeed = require('../models/flightSeed')
@@ -19,7 +20,7 @@ flightRouter.get('/', (req, res) => {
     });
 });
 
-// index
+// index 
 flightRouter.get('/flights', (req, res) => {
     res.render('index.ejs', {
         tabTitle: 'Flights',
@@ -40,11 +41,18 @@ flightRouter.get('/flights', (req, res) => {
 
 // edit
 
+// buy
+
 
 // show
+flightRouter.get('/flights/:id', (req, res) => {
+    Flight.findById(req.params.id, (error, flight) => {
+        res.render('show.ejs', {
+            tabTitle:'todo'
+        });
+    }); 
+});
 
-
-// buy
 
 
 
