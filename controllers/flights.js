@@ -1,26 +1,22 @@
 // dependencies
 const express = require('express');
-const {
-    findByIdAndUpdate
-} = require('../models/flights');
-const flights = require('../models/flights')
-const flightsSeed = require('../models/flightsSeed.js')
-
-// route objects
 const flightRouter = express.Router();
 const Flight = require('../models/flights');
+const flightSeed = require('../models/flightSeed')
 
 // seed route
 flightRouter.get('/seed', (req, res) => {
     Flight.deleteMany({}, (error, allFlights) => {})
-    Flight.create(flightsSeed, (error, data) => {
+    Flight.create(flightSeed, (error, data) => {
         res.redirect('/')
     });
 });
 
 // home page
 flightRouter.get('/', (req, res) => {
-    res.render('home.ejs')
+    res.render('home.ejs', {
+        tabTitle: 'Home',
+    });
 });
 
 // index

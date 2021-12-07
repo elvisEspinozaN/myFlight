@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const flightSchema = new Schema({
-    flight_id: {
-        type: Number,
+    flight_date: {
+        type: String,
         required: true
     },
     airline_name: {
@@ -12,26 +12,40 @@ const flightSchema = new Schema({
     },
     from_location: {
         type: String,
-        required: true,
-        uppercase: true
+        required: true
     },
     to_location: {
         type: String,
-        required: true,
-        uppercase: true
+        required: true
     },
     departure_time: {
-        type: Number,
+        type: String,
         required: true
     },
     arrival_time: {
-        type: Number,
+        type: String,
         required: true
     },
-    qty: {
+    quantity: {
         type: Number,
         min: 0
     },
-})
+    price: {
+        type: Number,
+        required: true
+    },
+    img: {
+        type: String
+    },
+    oneWay: {
+        type: Boolean
+    },
+    round_trip: {
+        type: Boolean
+    },
+}, {
+    timestamps: true
+});
 
-module.exports = mongoose.model('Flight', flightSchema);
+const Flight = mongoose.model('Flight', flightSchema);
+module.exports = Flight;
