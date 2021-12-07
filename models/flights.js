@@ -18,6 +18,10 @@ const flightSchema = new Schema({
         type: String,
         required: true
     },
+    duration: {
+        type: Number,
+        required: true,
+    },
     departure_time: {
         type: String,
         required: true
@@ -36,12 +40,6 @@ const flightSchema = new Schema({
     },
     img: {
         type: String
-    },
-    oneWay: {
-        type: Boolean
-    },
-    round_trip: {
-        type: Boolean
     },
 }, {
     timestamps: true
