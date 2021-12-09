@@ -2,10 +2,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-// const morgan = require('morgan');
-// const session = require('express-session');
+const morgan = require('morgan');
+const session = require('express-session');
 
 const flightsController = require('./controllers/flights');
+const userController = require('./controllers/users');
 
 // intialize express
 const app = express();
@@ -16,6 +17,7 @@ require('dotenv').config();
 const {
     DATABASE_URL,
     PORT,
+    SECRET,
 } = process.env
 
 mongoose.connect(DATABASE_URL);
@@ -29,14 +31,35 @@ db.on('error', (error) => {
 });
 
 // mount middleware
+app.use(morgan('dev'));
+
 app.use(express.urlencoded({
     extended: false
 }));
+
 app.use(express.static('public'));
+
 app.use(methodOverride('_method'));
+
+app.use(session({
+    seret: SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(async function (req, res, next) {
+    if (req.session && req.session.user) {
+        const user = await require('./models/user').findById(req.session.user)
+        res.locals.user = user;
+    } else {
+        res.locals.user = null;
+    };
+    next();
+});
 
 // mount routers
 app.use('/', flightsController);
+app.use('/', userController);
 
 // listener
 app.listen(PORT, () => {
