@@ -41,3 +41,21 @@ usersRouter.post('/signup', (req, res) => {
         res.redirect('/dashboard');
     });
 });
+
+// logout
+usersRouter.post('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/')
+    });
+});
+
+// dashboard
+usersRouter.get('/dashboard', (req, res) => {
+    if (!req.session.user) return res.redirect('/login');
+    User.findById(req.session.user, (error, user) => {
+        res.render('dashboard.ejs', {
+            tabTitle: 'Dashboard',
+            user,
+        });
+    });
+});
