@@ -1,13 +1,12 @@
 // dependencies
 const express = require('express');
-const { findById } = require('../models/flights');
 const flightRouter = express.Router();
 const Flight = require('../models/flights');
 const flightSeed = require('../models/flightSeed')
 
 // seed route
 flightRouter.get('/seed', (req, res) => {
-    Flight.deleteMany({}, (error, allFlights) => {})
+    Flight.deleteMany({}, (error, flights) => {})
     Flight.create(flightSeed, (error, data) => {
         res.redirect('/')
     });
@@ -22,8 +21,11 @@ flightRouter.get('/', (req, res) => {
 
 // index 
 flightRouter.get('/flights', (req, res) => {
-    res.render('index.ejs', {
-        tabTitle: 'Flights',
+    Flight.find({}, (error, flights) => {
+        res.render('index.ejs', {
+            tabTitle: 'Flights',
+            flights,
+        });
     });
 });
 
@@ -41,14 +43,28 @@ flightRouter.get('/flights', (req, res) => {
 
 // edit
 
+
 // buy
+flightRouter.put('/flights/:id/buy', (req, res) => {
+    Flight.findById(req.params.id, (error, flight) => {
+        if(flight.quantity){
+            flight.quantity--
+            flight.save(() => {
+                res,redirect(`/flights/${flight._id}`)
+            });
+        }else{
+            res.redirect(`/flights/${flight._id}`)
+        };
+    });
+});
 
 
 // show
 flightRouter.get('/flights/:id', (req, res) => {
-    Flight.findById(req.params.id, (error, flight) => {
+    Flight.findById(req.params.id, (error, flights) => {
         res.render('show.ejs', {
-            tabTitle:'todo'
+            tabTitle:'todo',
+            flights
         });
     }); 
 });
