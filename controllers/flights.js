@@ -1,14 +1,14 @@
 // dependencies
 const express = require('express');
-const flightRouter = express.Router();
 const Flight = require('../models/flights');
 const flightSeed = require('../models/flightSeed')
+const flightRouter = express.Router();
 
 // seed route
 flightRouter.get('/seed', (req, res) => {
     Flight.deleteMany({}, (error, flights) => {})
     Flight.create(flightSeed, (error, data) => {
-        res.redirect('/')
+        res.redirect('/flights')
     });
 });
 
@@ -30,29 +30,21 @@ flightRouter.get('/flights', (req, res) => {
 });
 
 // new
-
-
 // delete
-
-
 // update
-
-
 // create
-
-
 // edit
-
 
 // buy
 flightRouter.put('/flights/:id/buy', (req, res) => {
     Flight.findById(req.params.id, (error, flight) => {
-        if(flight.quantity){
+        if (flight.quantity) {
             flight.quantity--
             flight.save(() => {
-                res,redirect(`/flights/${flight._id}`)
+                res,
+                res.redirect(`/flights/${flight._id}`)
             });
-        }else{
+        } else {
             res.redirect(`/flights/${flight._id}`)
         };
     });
@@ -63,13 +55,10 @@ flightRouter.put('/flights/:id/buy', (req, res) => {
 flightRouter.get('/flights/:id', (req, res) => {
     Flight.findById(req.params.id, (error, flights) => {
         res.render('show.ejs', {
-            tabTitle:'todo',
+            tabTitle: 'todo',
             flights
         });
-    }); 
+    });
 });
-
-
-
 
 module.exports = flightRouter;

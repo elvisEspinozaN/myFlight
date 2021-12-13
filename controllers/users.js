@@ -1,5 +1,4 @@
 // dependencies
-
 const usersRouter = require('express').Router();
 const User = require('../models/user');
 
@@ -7,6 +6,13 @@ const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 10;
 
 // login
+usersRouter.get('/login', (req, res) => {
+    res.render('login.ejs', {
+        tabTitle: 'Login',
+        error: '',
+    });
+});
+
 usersRouter.post('/login', (req, res) => {
     User.findOne({
         email: req.body.email
@@ -22,7 +28,7 @@ usersRouter.post('/login', (req, res) => {
             });
         }
         req.session.user = user._id;
-        res.redirect('dahsboard')
+        res.redirect('dashboard')
     });
 });
 
@@ -59,3 +65,5 @@ usersRouter.get('/dashboard', (req, res) => {
         });
     });
 });
+
+module.exports = usersRouter;

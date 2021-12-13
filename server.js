@@ -14,18 +14,15 @@ const app = express();
 // configure settings
 require('dotenv').config();
 
-const {
-    DATABASE_URL,
-    PORT,
-    SECRET,
-} = process.env
+const { DATABASE_URL, PORT, SECRET } = process.env
 
 mongoose.connect(DATABASE_URL);
-
 const db = mongoose.connection;
+
 db.on('connected', () => {
-    console.log('Connected to MongoDB');
+    console.log('Connected MongoDB');
 });
+
 db.on('error', (error) => {
     console.log('MongoDB Error: ', error.message);
 });
@@ -42,9 +39,9 @@ app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
 app.use(session({
-    seret: SECRET,
+    secret: SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
 }));
 
 app.use(async function (req, res, next) {

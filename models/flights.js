@@ -2,19 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const flightSchema = new Schema({
-    flight_date: {
+    date: {
         type: String,
         required: true
     },
-    airline_name: {
+    airline: {
         type: String,
         required: true
     },
-    from_location: {
+    from: {
         type: String,
         required: true
     },
-    to_location: {
+    to: {
         type: String,
         required: true
     },
@@ -22,11 +22,11 @@ const flightSchema = new Schema({
         type: Number,
         required: true,
     },
-    departure_time: {
+    departure: {
         type: String,
         required: true
     },
-    arrival_time: {
+    arrival: {
         type: String,
         required: true
     },

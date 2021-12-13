@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/header.ejs') %>
+    <main class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-9"><strong><%= flight.from %> - <%= flight.to %></strong></div>
+                <div class="col-4">Information<br><%= flight.departure %> - <%= flight.arrival %><br>
+                    <%= flight.duration %> hrs. estimated<br> </div>
+                <div class="col-6">Rate<br>$<%= flight.price %><br>Seats left: <%= flight.quantity %><br>
+                    <%if(flight.quantity > 0){%>
+                    <form action="/flights/<%= flight._id %>/buy?_method=PUT" method="POST">
+                        <input type="submit" name="" id="" value="Purchase">
+                    </form>
+                    <% }else{ %>
+                    <p>Currently no more seats</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>

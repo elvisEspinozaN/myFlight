@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/head.ejs') %> 
+<%- include('./partials/head.ejs') %>
+
 <body>
-    <header>
-        <h1>myFlight</h1>
-        <nav class="">
-            <a class="" href="">Home</a>
-            <a class="" href="">Flights</a>
-            <a class="" href="">Search</a>
-            <a class="" href="">Logout</a>
-        </nav>
-    </header>
-    <div class="">
+    <%- include('./partials/header.ejs') %>
+    <main class="conatiner">
         <div class="">
-            <h3>Welcome <%=user.firstName%></h3>
-            <p>Email is <%=user.email%></p>
+            <div class="">
+                <h3>Welcome <%= user.firstName %></h3>
+                <p>Current email is <%= user.email %></p>
+            </div>
         </div>
-    </div>
+    </main>
     <%- include('./partials/footer.ejs') %>
 </body>
+
 </html>
