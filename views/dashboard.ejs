@@ -5,14 +5,14 @@
 <body>
     <%- include('./partials/header.ejs') %>
     <main class="conatiner">
-        <div class="profile-container">
+        <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h4 class="text-center"><strong>Profile</strong></h4>
+                    <h4 class="text-center"><strong>STYLE 1</strong></h4>
                     <hr>
                     <div class="profile-card-2"><img src="" class="profile-image">
                         <div class="profile-name">Welcome, <%= user.firstName %>.</div>
-                        <div class="profile-username">Your Email: <%= user.email %></div>
+                        <div class="profile-email">Your Email: <%= user.email %></div>
                         <div class="row">
                             <div class="col-xs-4">
                                 <div class="profile-overview">
@@ -21,15 +21,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="add-button">
-                            <a href="/dashboard/new"><button type="button" class="btn btn-success btn-sm">Add
-                                    Profile</button></a>
-                        </div>
-                        <div class="remove-button">
-                            <form action="/dashboard/<%= user._id %>?_method=DELETE" method="POST">
-                                <input type="submit" class="btn btn-danger btn-sm" name="" id="" value="Delete">
-                            </form>
-                        </div>
+                    </div>
+                    <div class="add-button">
+                        <a href="/dashboard/new"><button type="button" class="btn btn-success btn-sm">Add
+                                Profile</button></a>
+                    </div>
+                    <div class="edit-button">
+                        <a href="/dashboard/<%= user._id %>/edit"><button type="button"
+                                class="btn btn-success btn-sm">Edit
+                                Profile</button></a>
+                    </div>
+                    <div class="remove-button">
+                        <form action="/dashboard/<%= user._id %>?_method=DELETE" method="POST">
+                            <input type="submit" class="btn btn-danger btn-sm" name="" id="" value="Delete">
+                        </form>
     </main>
     <%- include('./partials/footer.ejs') %>
 </body>
