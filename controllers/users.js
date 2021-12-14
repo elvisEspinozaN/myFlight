@@ -3,6 +3,7 @@ const usersRouter = require('express').Router();
 const User = require('../models/user');
 
 const bcrypt = require('bcrypt');
+const user = require('../models/user');
 const SALT_ROUNDS = 10;
 
 // login
@@ -51,7 +52,7 @@ usersRouter.post('/signup', (req, res) => {
 // logout
 usersRouter.post('/logout', (req, res) => {
     req.session.destroy(() => {
-        res.redirect('/flights')
+        res.redirect('/')
     });
 });
 
@@ -60,9 +61,40 @@ usersRouter.get('/dashboard', (req, res) => {
     if (!req.session.user) return res.redirect('/login');
     User.findById(req.session.user, (error, user) => {
         res.render('dashboard.ejs', {
-            tabTitle: 'Dashboard',
+            tabTitle: 'Profile',
             user,
         });
+    });
+});
+
+// new profile
+usersRouter.get('/dashboard/new', (req, res) => {
+    res.render('new.ejs', {
+        tabTitle: 'Add Profile',
+    });
+});
+
+// create profile
+usersRouter.post('/dashboard', (req, res) => {
+    User.create(req.body, (error, user) => {
+        res.redirect('/dashboard')
+    });
+});
+
+// edit profile
+usersRouter.get('/dashboard/:id/edit', (req, res) => {
+    User.findById(req.params.id, (error, user) => {
+        res.render('edit.ejs', {
+            tabTitle: Editing,
+            user,
+        });
+    });
+});
+
+// delete profile
+usersRouter.delete('/dashboard/:id', (req, res) => {
+    User.findByIdAndDelete(req.params.id, (error, user) => {
+        res.redirect('/dashboard')
     });
 });
 

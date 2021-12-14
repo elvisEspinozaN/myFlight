@@ -7,9 +7,7 @@
     <div class="card-group">
         <% for(flight of flights){ %>
         <div class="card">
-            <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <a href="/flights/<%= flight._id %>"><img src="<%= flight.img %>" alt=""></a>
                 <h5 class="card-title">$<%= flight.price %></h5>
                 <p class="card-text"><%= flight.from %> - <%= flight.to %></p>
                 <p class="card-text"><small class="text-muted"><%= flight.airline %></small></p>

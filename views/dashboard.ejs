@@ -5,12 +5,22 @@
 <body>
     <%- include('./partials/header.ejs') %>
     <main class="conatiner">
-        <div class="">
-            <div class="">
-                <h3>Welcome <%= user.firstName %></h3>
-                <p>Current email is <%= user.email %></p>
-            </div>
-        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="text-center"><strong>Profile</strong></h4>
+                    <hr>
+                    <div class="profile-card-2"><img src="" class="profile-image">
+                        <div class="profile-name">Welcome, <%= user.firstName %>.</div>
+                        <div class="profile-username">Your Email: <%= user.email %></div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="profile-overview">
+                                    <p>Your Wishlist</p>
+                                    <h4></h4>
+                                </div>
+                            </div>
+                        </div>
     </main>
     <%- include('./partials/footer.ejs') %>
 </body>
