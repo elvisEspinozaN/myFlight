@@ -1,9 +1,9 @@
 // dependencies
 const usersRouter = require('express').Router();
 const User = require('../models/user');
+const Flight = require('../models/flights')
 
 const bcrypt = require('bcrypt');
-const user = require('../models/user');
 const SALT_ROUNDS = 10;
 
 // login
@@ -50,7 +50,7 @@ usersRouter.post('/signup', (req, res) => {
 });
 
 // logout
-usersRouter.post('/logout', (req, res) => {
+usersRouter.get('/logout', (req, res) => {
     req.session.destroy(() => {
         res.redirect('/')
     });

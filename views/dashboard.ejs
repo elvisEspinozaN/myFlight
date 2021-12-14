@@ -5,7 +5,7 @@
 <body>
     <%- include('./partials/header.ejs') %>
     <main class="conatiner">
-        <div class="container">
+        <div class="profile-container">
             <div class="row">
                 <div class="col-md-4">
                     <h4 class="text-center"><strong>Profile</strong></h4>
@@ -20,6 +20,15 @@
                                     <h4></h4>
                                 </div>
                             </div>
+                        </div>
+                        <div class="add-button">
+                            <a href="/dashboard/new"><button type="button" class="btn btn-success btn-sm">Add
+                                    Profile</button></a>
+                        </div>
+                        <div class="remove-button">
+                            <form action="/dashboard/<%= user._id %>?_method=DELETE" method="POST">
+                                <input type="submit" class="btn btn-danger btn-sm" name="" id="" value="Delete">
+                            </form>
                         </div>
     </main>
     <%- include('./partials/footer.ejs') %>
