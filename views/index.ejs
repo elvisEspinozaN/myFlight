@@ -4,6 +4,7 @@
 
 <body>
     <%- include('./partials/header.ejs') %>
+    <main class="container">
     <div class="card-group">
         <% for(flight of flights){ %>
         <div class="card">
@@ -21,6 +22,7 @@
         </div>
         <% } %>
     </div>
+    </main>
     <%- include('./partials/footer.ejs') %>
 </body>
 

@@ -67,6 +67,10 @@ usersRouter.get('/dashboard', (req, res) => {
     });
 });
 
+// add wishlist
+
+
+
 // new profile
 usersRouter.get('/dashboard/new', (req, res) => {
     res.render('new.ejs', {

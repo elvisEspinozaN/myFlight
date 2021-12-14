@@ -4,7 +4,31 @@
 
 <body>
     <%- include('./partials/header.ejs') %>
-    <main class="container">
+    <div class='container'>
+        <div class='row'>
+            <div class='col-12'>
+                <h1>Destination to <%= flight.to %></h1>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= flight.from %> - <%= flight.to %></h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><%= flight.departure %> - <%= flight.arrival %></h6>
+                        <p class="card-text">
+                            <%= flight.duration %> hrs. estimated<br>
+                            $<%= flight.price %><br>Seats left: <%= flight.quantity %><br>
+                            <%if(flight.quantity > 0){%>
+                            <form action="/flights/<%= flight._id %>/buy?_method=PUT" method="POST">
+                                <input type="submit" name="" id="" value="Purchase">
+                            </form>
+                            <% }else{ %>
+                            <p>Currently no more seats</p>
+                            <% } %>
+                            <p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <main class="container">
         <div class="container">
             <div class="row">
                 <div class="col-9"><strong><%= flight.from %> - <%= flight.to %></strong></div>
@@ -21,7 +45,7 @@
                 </div>
             </div>
         </div>
-    </main>
+    </main> -->
     <%- include('./partials/footer.ejs') %>
 </body>
 
