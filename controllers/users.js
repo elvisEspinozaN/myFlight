@@ -51,7 +51,7 @@ usersRouter.post('/signup', (req, res) => {
 // logout
 usersRouter.post('/logout', (req, res) => {
     req.session.destroy(() => {
-        res.redirect('/')
+        res.redirect('/flights')
     });
 });
 
