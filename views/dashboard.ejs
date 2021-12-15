@@ -4,8 +4,28 @@
 
 <body>
     <%- include('./partials/header.ejs') %>
-    <main class="conatiner">
-        <div class="container">
+    <main class="p-conatiner">
+        <div class="p-card">
+            <div class="text">
+                <img id="p-img" src="https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg" alt="">
+                <h3>Welcome <%= user.firstName %>.</h3>
+                <p>myFlight Member <%= user.email %></p>
+                <p>
+                    Wishlist <br>
+                    <p class="update">
+                        update comming soon to add to wishlist <br>
+                        as well as adding multiple profiles!
+
+                    </p>
+                </p>
+            </div>
+            <div class="p-button">
+                    <a href="/flights/new"><button type="button" class="btn btn-success btn-sm">Add
+                            Flight</button></a>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <h4 class="text-center"><strong>Profile</strong></h4>
@@ -25,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
     </main>
     <%- include('./partials/footer.ejs') %>
 </body>
