@@ -28,3 +28,4 @@
 - a price range depending on duration of flights
 - user is able to add multiple profiles with profile pictures
 - use of apis to find more flights
+- more updates..
