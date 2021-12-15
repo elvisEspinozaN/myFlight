@@ -38,7 +38,7 @@ flightRouter.get('/flights/new', (req, res) => {
 
 // delete
 flightRouter.delete('/flights/:id', (req, res) => {
-    Flight.findByIdAndDelete(req.params.id, (error, flights) => {
+    Flight.findByIdAndDelete(req.params.id, (error, flight) => {
         res.redirect('/flights')
     });
 });
@@ -50,23 +50,23 @@ flightRouter.put('/flights/:id', (req, res) => {
         req.body, {
             new: true
         },
-        (error, flights) => {
+        (error, flight) => {
             res.redirect(`/flights/${req.params.id}`)
         });
 });
 
 // create
 flightRouter.post('/flights', (req, res) => {
-    Flight.create(req.body, (error, flights) => {
+    Flight.create(req.body, (error, flight) => {
         res.redirect('/flights')
     });
 });
 
 // edit
 flightRouter.get('/flights/:id/edit', (req, res) => {
-    Flight.findById(req.params.id, (error, flights) => {
+    Flight.findById(req.params.id, (error, flight) => {
         res.render('f-edit.ejs', {
-            flights,
+            flight,
             tabTitle: 'Editing',
         });
     });

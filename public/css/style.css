@@ -88,6 +88,3 @@ footer{
 .update {
     opacity: .3;
 }
-@media screen and (max-width: 45em) {
-    .home-page { display: block; }
-  }

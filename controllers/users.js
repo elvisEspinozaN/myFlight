@@ -73,47 +73,47 @@ usersRouter.get('/dashboard', (req, res) => {
 
 
 // new profile
-usersRouter.get('/dashboard/new', (req, res) => {
-    res.render('new.ejs', {
-        tabTitle: 'Add Profile',
-    });
-});
+// usersRouter.get('/dashboard/new', (req, res) => {
+//     res.render('new.ejs', {
+//         tabTitle: 'Add Profile',
+//     });
+// });
 
 // delete profile
-usersRouter.delete('/dashboard/:id', (req, res) => {
-    User.findByIdAndDelete(req.params.id, (error, user) => {
-        res.redirect('/dashboard')
-    });
-});
+// usersRouter.delete('/dashboard/:id', (req, res) => {
+//     User.findByIdAndDelete(req.params.id, (error, user) => {
+//         res.redirect('/dashboard')
+//     });
+// });
 
 // update profile
-usersRouter.put('/dashboard/:id', (req, res) => {
-    User.findByIdAndUpdate(
-        req.params.id,
-        req.body, {
-            new: true
-        },
-        (error, user) => {
-            res.redirect(`/dashboard/${req.params.id}`)
-        });
-});
+// usersRouter.put('/dashboard/:id', (req, res) => {
+//     User.findByIdAndUpdate(
+//         req.params.id,
+//         req.body, {
+//             new: true
+//         },
+//         (error, user) => {
+//             res.redirect(`/dashboard/${req.params.id}`)
+//         });
+// });
 
 // create profile
-usersRouter.post('/dashboard', (req, res) => {
-    User.create(req.body, (error, user) => {
-        res.redirect('/dashboard')
-    });
-});
+// usersRouter.post('/dashboard', (req, res) => {
+//     User.create(req.body, (error, user) => {
+//         res.redirect('/dashboard')
+//     });
+// });
 
 // edit profile
-usersRouter.get('/dashboard/:id/edit', (req, res) => {
-    User.findById(req.params.id, (error, user) => {
-        res.render('edit.ejs', {
-            tabTitle: 'Editing',
-            user,
-        });
-    });
-});
+// usersRouter.get('/dashboard/:id/edit', (req, res) => {
+//     User.findById(req.params.id, (error, user) => {
+//         res.render('edit.ejs', {
+//             tabTitle: 'Editing',
+//             user,
+//         });
+//     });
+// });
 
 
 module.exports = usersRouter;

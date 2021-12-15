@@ -6,7 +6,7 @@
     <%- include('./partials/header.ejs') %>
     <main class="container">
         <div class="col-sm-6">
-            <form action="/dashboard" method="POST">
+            <form action="/flights" method="POST">
                 <div class="user_info">
                     <div class="col-sm-12">
                         <h2>Add Your Own Flight</h2>
@@ -23,6 +23,14 @@
                         <div class="form-group">
                             <label for="">To</label>
                             <input type="text" class="form-control" name="to" placeholder="City Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Price</label>
+                            <input type="number" class="form-control" name="price" placeholder="Price">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Airline</label>
+                            <input type="text" class="form-control" name="airline" placeholder="Airline">
                         </div>
                         <div class="form-group">
                             <label for="">Departure Time</label>
