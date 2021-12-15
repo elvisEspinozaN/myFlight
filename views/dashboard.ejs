@@ -17,24 +17,15 @@
                     <div class="row">
                         <div class="col-xs-4">
                             <div class="profile-overview">
-                                <p>Your Wishlist</p>
-                                <h4></h4>
+                                <p>Your WishList</p>
+                            </div>
+                            <div class="add-button">
+                                <a href="/flights/new"><button type="button" class="btn btn-success btn-sm">Add
+                                        Flight</button></a>
                             </div>
                         </div>
                     </div>
-                    <div class="add-button">
-                        <a href="/dashboard/new"><button type="button" class="btn btn-success btn-sm">Add
-                                Profile</button></a>
-                    </div>
-                    <div class="edit-button">
-                        <a href="/dashboard/<%= user._id %>/edit"><button type="button"
-                                class="btn btn-success btn-sm">Edit
-                                Profile</button></a>
-                    </div>
-                    <div class="remove-button">
-                        <form action="/dashboard/<%= user._id %>?_method=DELETE" method="POST">
-                            <input type="submit" class="btn btn-danger btn-sm" name="" id="" value="Delete">
-                        </form>
+                </div>
     </main>
     <%- include('./partials/footer.ejs') %>
 </body>

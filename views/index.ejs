@@ -5,19 +5,21 @@
 <body>
     <%- include('./partials/header.ejs') %>
     <main class="container">
-        <div class="card-group">
+        <div class="in-container fluid">
             <% for(flight of flights){ %>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">$<%= flight.price %></h5>
-                    <p class="card-text"><%= flight.from %> - <%= flight.to %></p>
-                    <p class="card-text"><small class="text-muted"><%= flight.airline %></small></p>
-                </div>
-                <div class="card-footer">
-                    <small>
-                        <a href="/flights/<%= flight._id %>" class="card-link">more info</a>
-                        <a href="#" class="card-link">add to wishlist</a>
-                    </small>
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">$<%= flight.price %></h5>
+                        <p class="card-text"><%= flight.from %> - <%= flight.to %></p>
+                        <p class="card-text"><small class="text-muted"><%= flight.airline %></small></p>
+                    </div>
+                    <div class="card-footer">
+                        <small>
+                            <a href="/flights/<%= flight._id %>" class="card-link">more info</a>
+                            <a href="#" class="card-link">add to wishlist</a>
+                        </small>
+                    </div>
                 </div>
             </div>
             <% } %>

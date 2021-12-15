@@ -63,6 +63,7 @@ usersRouter.get('/dashboard', (req, res) => {
         res.render('dashboard.ejs', {
             tabTitle: 'Profile',
             user,
+            Flight,
         });
     });
 });
@@ -86,7 +87,7 @@ usersRouter.delete('/dashboard/:id', (req, res) => {
 });
 
 // update profile
-usersRouter.put('dashboard/:id', (req, res) => {
+usersRouter.put('/dashboard/:id', (req, res) => {
     User.findByIdAndUpdate(
         req.params.id,
         req.body, {

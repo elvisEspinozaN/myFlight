@@ -1,7 +1,6 @@
 // dependencies
 const express = require('express');
 const Flight = require('../models/flights');
-const User = require('../models/user')
 const flightSeed = require('../models/flightSeed')
 const flightRouter = express.Router();
 
@@ -31,47 +30,47 @@ flightRouter.get('/flights', (req, res) => {
 });
 
 // new
-flightRouter.get('/mywish', (req, res) => {
-    const user = User.findById(req.params.user)
-    res.render('new.ejs', {
-        user,
+flightRouter.get('/flights/new', (req, res) => {
+    res.render('f-new.ejs', {
+        tabTitle: 'My Wish',
     });
 });
 
 // delete
-flightRouter.delete('/:id', (req, res) => {
-    const flight = Flight.findByIdAndDelete(req.params.id);
-    res.redirect('/dashboard')
+flightRouter.delete('/flights/:id', (req, res) => {
+    Flight.findByIdAndDelete(req.params.id, (error, flight) => {
+        res.redirect('/flights')
+    });
 });
 
 // update
-flightRouter.put('/:id', (req, res) => {
+flightRouter.put('/flights/:id', (req, res) => {
     Flight.findByIdAndUpdate(
         req.params.id,
         req.body, {
             new: true
         },
         (error, flight) => {
-            res.redirect(`/dashboard/${req.params.id}`)
+            res.redirect(`/flights/${req.params.id}`)
         });
 });
 
 // create
-flightRouter.post('/dashboard', (req, res) => {
+flightRouter.post('/flights', (req, res) => {
     Flight.create(req.body, (error, flight) => {
-        res.redirect('/dashboard')
+        res.redirect('/flights')
     });
 });
 
 // edit
-flightRouter.get('/dashboard/:id/edit', (req, res) => {
-    const user = User.findById(req.session.user)
-    const flight = Flight.findById(req.params.id)
-    res.render('edit.ejs', {
-        flight,
-        user
-    })
-})
+flightRouter.get('/flights/:id/edit', (req, res) => {
+    Flight.findById(req.params.id, (error, flight) => {
+        res.render('f-edit.ejs', {
+            flight,
+            tabTitle: 'Editing',
+        });
+    });
+});
 
 // buy
 flightRouter.put('/flights/:id/buy', (req, res) => {

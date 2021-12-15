@@ -4,31 +4,24 @@ const Schema = mongoose.Schema;
 const flightSchema = new Schema({
     date: {
         type: String,
-        required: true
     },
     airline: {
         type: String,
-        required: true
     },
     from: {
         type: String,
-        required: true
     },
     to: {
         type: String,
-        required: true
     },
     duration: {
         type: Number,
-        required: true,
     },
     departure: {
         type: String,
-        required: true
     },
     arrival: {
         type: String,
-        required: true
     },
     quantity: {
         type: Number,
@@ -36,7 +29,6 @@ const flightSchema = new Schema({
     },
     price: {
         type: Number,
-        required: true
     },
     img: {
         type: String
