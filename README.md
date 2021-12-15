@@ -18,7 +18,10 @@
 - HTML5
 
 ## Screenshot
-<img width="450" alt="" src="https://i.imgur.com/WjkJ1us.png">
+<img width="300" alt="" src="https://i.imgur.com/WjkJ1us.png">
+<img width="300" alt="" src="https://i.imgur.com/iS0mo9B.png">
+<img width="300" alt="" src="https://i.imgur.com/2cNP3aD.png">
+<img width="300" alt="" src="https://i.imgur.com/su4v25K.png">
 
 ### Live Website
 [*Click Here*](#) site is live
